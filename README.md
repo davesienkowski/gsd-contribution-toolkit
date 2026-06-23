@@ -27,7 +27,7 @@ From your gsd-core checkout (so `--scope project` targets it):
 
 ```bash
 node <gsd-core>/bin/gsd-tools.cjs capability install \
-  https://github.com/davesienkowski/gsd-contribution-toolkit.git#v2.0.0 \
+  https://github.com/davesienkowski/gsd-contribution-toolkit.git#v2.1.0 \
   --scope project --yes --shared-file .claude/settings.json
 ```
 
@@ -35,7 +35,7 @@ node <gsd-core>/bin/gsd-tools.cjs capability install \
 - `--shared-file .claude/settings.json` is **required to actually apply the hooks** into settings.json; without it the install records the ledger + overlay but writes no hooks.
 - `--scope project` installs into this checkout (`.gsd/capabilities/contribution-toolkit/` + a `.gsd-capabilities.json` ledger), keeping the enforcement project-scoped to the gsd-core checkout (never `~/.claude`). Use `--scope global` for `~/.gsd/...`.
 
-Pin a specific release with `#v2.0.0` (a tag) or `#sha:<40-hex>` (an exact commit).
+Pin a specific release with `#v2.1.0` (a tag) or `#sha:<40-hex>` (an exact commit).
 
 > The public repo was renamed to `gsd-contribution-toolkit` from its earlier `…-gate` name; GitHub redirects the old URL, so an existing `#v1.0.0` install does not hard-break.
 
@@ -80,6 +80,15 @@ When a contribution gate **denies** an action — or the `gsd-core-contribution`
 
 This offramp is **advisory only**: the deny stays **fail-closed and unbypassable**, it NEVER suggests bypassing the gate or abusing `GSD_CONTRIB_OVERRIDE` to dodge a real failure, and no gate is weakened. (Surfaced from the contribution skill + `gsd-submit`/`gsd-review-sweep` commands.)
 
+## Per-runtime behavior
+
+This capability is delivered per-runtime, and what it enforces depends on the runtime:
+
+- **Claude Code** — the full surface installs and the **12 `PreToolUse` gates enforce** at the harness boundary (once wired into `settings.json` via `--shared-file`). Skills + commands are delivered into the runtime dirs.
+- **Other runtimes (Codex, OpenCode, …)** — the **2 skills are delivered cross-runtime** via the native `skills[]` contribution (the install engine copy-converts them into the runtime dialect), but those runtimes have **no `PreToolUse`-deny surface**, so the toolkit runs **advisory-only** there — its guidance is advice, not a hard block. Each skill carries an explicit advisory-only note to that effect.
+
+In short: enforcement is a Claude-harness property; everywhere else the toolkit is advisory.
+
 ## Honesty & scope
 
 This matters — please read it as written, don't over-read it:
@@ -91,6 +100,6 @@ This matters — please read it as written, don't over-read it:
 
 ## Provenance
 
-- **Version:** 2.0.0
-- **Source toolkit:** gsd-contrib-toolkit (private), v2.2 milestone
+- **Version:** 2.1.0
+- **Source toolkit:** gsd-contrib-toolkit (private), v2.3 milestone
 - The bundle is generated from canonical `hooks/`/`skills/`/`commands/` with a `--check` drift gate and validated against the LIVE gsd-core capability validators (tri-surface declared==shipped parity) before publish.

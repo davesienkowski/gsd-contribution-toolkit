@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.1.0 — 2026-06-23
+
+Cross-runtime honesty + on/off full-surface toggle (from the v2.3 source milestone). **MINOR** bump (additive content; no enforcement-surface change — the 13 hooks + 5 commands are byte-identical to v2.0.0).
+
+- **Per-runtime delivery made explicit:** the 2 skills now carry an "Advisory-only on non-Claude runtimes" section. On Claude the 12 `PreToolUse` gates enforce at the harness boundary; on other runtimes (Codex, OpenCode, …) the skills are delivered via the native `skills[]` contribution but run **advisory-only** (no `PreToolUse`-deny surface exists there). README gains a "Per-runtime behavior" section.
+- **Manifest title** cased to "GSD Contribution Toolkit".
+- **Honesty unchanged:** `gates[]` still empty; the harness-boundary property belongs to the separate personal `PreToolUse` hooks, not this capability; `disable`/`remove` genuinely removes the enforcement; `GSD_CONTRIB_OVERRIDE` stays logged.
+- Install via the gsd-core git capability adapter from `#v2.1.0` (`--scope project --yes --shared-file .claude/settings.json`).
+
 ## v2.0.0 — 2026-06-23
 
 Rename + self-contained distribution. **MAJOR** bump (rename of the capability AND new shipped surfaces).

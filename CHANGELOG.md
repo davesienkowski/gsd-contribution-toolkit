@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.1.1 — 2026-06-23
+
+**Docs release** — the bundle logic is byte-identical to v2.1.0 (hooks + skills + commands + manifest surface unchanged; only the version string, README, and docs change).
+
+- **Single authoritative README:** rewritten to GitHub best practices with a proper title, a capabilities-by-role section (codeowner / maintainer / contributor / collaborator), the remote capability-install flow, an architecture/honesty section, and a "For reviewers" section for gsd-core maintainers.
+- **Reviewer doc set added** under `docs/`: `cross-runtime-delivery-model.md` (architecture), `reuse-and-methodology.md` (reuse map + methodology alignment), and `upstream-feature-requests.md` (two capability-framework asks for gsd-core maintainers, each citing this toolkit as the reference implementation).
+
 ## v2.1.0 — 2026-06-23
 
 Cross-runtime honesty + on/off full-surface toggle (from the v2.3 source milestone). **MINOR** bump (additive content; no enforcement-surface change — the 13 hooks + 5 commands are byte-identical to v2.0.0).

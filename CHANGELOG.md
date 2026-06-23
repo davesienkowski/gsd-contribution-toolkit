@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.1.3 — 2026-06-23
+
+**Docs release** — bundle logic byte-identical to v2.1.0.
+
+- **Added `docs/skills-reference.md`** — the 2 skills (`gsd-core-contribution`, `maintainer-review-sweep`): capabilities, trigger phrases, the pipeline each runs, and how to invoke them.
+- **Added `docs/commands-reference.md`** — the 5 commands: what each does, the **accepted arguments/parameters**, worked examples, and the mutation-safety model (advisory vs. opt-in `--apply`).
+
 ## v2.1.2 — 2026-06-23
 
 **Docs release** — bundle logic byte-identical to v2.1.0 (hooks + skills + commands + manifest surface unchanged).

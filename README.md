@@ -1,4 +1,4 @@
-# contrib-gate
+# contribution-gate
 
 A `role:feature` GSD capability that bundles the **gsd-core contribution + maintainer-review toolkit** as an installable, toggleable plugin for **GSD 1.6.0+** (ADR-1244 capability ecosystem).
 
@@ -17,13 +17,13 @@ From your gsd-core checkout (so `--scope project` targets it):
 
 ```bash
 node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability install \
-  https://github.com/davesienkowski/gsd-contrib-gate.git#v1.0.0 \
+  https://github.com/davesienkowski/gsd-contribution-gate.git#v1.0.0 \
   --scope project --yes --shared-file .claude/settings.json
 ```
 
 - `--yes` grants consent — the capability ships executable surfaces (the 13 hooks), so the install discloses them and aborts without consent.
 - `--shared-file .claude/settings.json` is **required to actually apply the gates** into settings.json; without it the install records the ledger + overlay but writes no hooks.
-- `--scope project` installs into this checkout (`.gsd/capabilities/contrib-gate/` + a `.gsd-capabilities.json` ledger). Use `--scope global` for `~/.gsd/...`.
+- `--scope project` installs into this checkout (`.gsd/capabilities/contribution-gate/` + a `.gsd-capabilities.json` ledger). Use `--scope global` for `~/.gsd/...`.
 
 Pin a specific release with `#v1.0.0` (a tag) or `#sha:<40-hex>` (an exact commit).
 
@@ -31,10 +31,10 @@ Pin a specific release with `#v1.0.0` (a tag) or `#sha:<40-hex>` (an exact commi
 
 ```bash
 node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability status   --scope project
-node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability disable  contrib-gate --scope project
-node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability enable   contrib-gate --scope project
-node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability update   contrib-gate --scope project --yes
-node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability remove   contrib-gate --scope project
+node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability disable  contribution-gate --scope project
+node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability enable   contribution-gate --scope project
+node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability update   contribution-gate --scope project --yes
+node <gsd-core>/gsd-core/bin/gsd-tools.cjs capability remove   contribution-gate --scope project
 ```
 
 `remove` strips exactly the ledger-recorded files and shared-file fragments — it never deletes shared files wholesale.

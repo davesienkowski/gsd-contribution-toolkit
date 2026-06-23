@@ -2,7 +2,7 @@
 
 ## v1.0.0 — 2026-06-23
 
-Initial published distribution of the `contrib-gate` GSD capability.
+Initial published distribution of the `contribution-gate` GSD capability.
 
 - 12 `PreToolUse` gates + 1 `UserPromptSubmit` advisory (the 13 `hooks[]`).
 - 2 skills (`gsd-core-contribution`, `maintainer-review-sweep`) + 5 prose-disclosed commands.

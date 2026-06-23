@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.0.0 — 2026-06-23
+
+Rename + self-contained distribution. **MAJOR** bump (rename of the capability AND new shipped surfaces).
+
+- **Renamed** the capability `contribution-gate` → `contribution-toolkit` (the public repo was renamed `gsd-contribution-gate` → `gsd-contribution-toolkit`; GitHub redirects the old URL so an existing `#v1.0.0` install does not hard-break).
+- **Self-contained bundle** — the install now actually delivers the full surface from the published tree: **13 hooks** (12 `PreToolUse` gates + 1 `UserPromptSubmit` advisory) + **2 skills** (`gsd-core-contribution`, `maintainer-review-sweep`) + **5 commands** (`gsd-submit`, `gsd-review-sweep`, `gsd-triage-assist`, `gsd-release-preflight`, `gsd-ruleset-drift`). The v1.0 README/CHANGELOG claimed it "ships skills/commands" while the v1.0 bundle shipped NEITHER (hooks-only); that claim is now TRUE — skills + commands are shipped in-bundle and delivered by the install engine into the runtime commands/skills dirs.
+- **FLOW-01 recovery offramp** documented: on a gate deny, the contribution skill + `gsd-submit`/`gsd-review-sweep` offer a GSD-native recovery (`/gsd-quick` inline fix, or route through `/gsd-debug` / discuss→plan→execute) — advisory only, never bypassing the fail-closed deny.
+- **Honesty unchanged:** `gates[]` is still **empty**; the capability is advisory-only at GSD-loop points and does NOT reach the harness tool-call boundary; the unbypassable `PreToolUse` property belongs to the SEPARATE personal hooks, not this capability; the `GSD_CONTRIB_OVERRIDE` override stays logged (per-worktree, reason-string), never silent — no new mechanism.
+- Install via the gsd-core git capability adapter from `#v2.0.0` (`--scope project --yes --shared-file .claude/settings.json`).
+
 ## v1.0.0 — 2026-06-23
 
 Initial published distribution of the `contribution-gate` GSD capability.

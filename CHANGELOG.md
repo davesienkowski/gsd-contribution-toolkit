@@ -1,8 +1,13 @@
 # Changelog
 
-## Unreleased
+## v2.1.2 — 2026-06-23
 
-- **docs:** added `docs/foundations.md` — what the toolkit is built on (trek-e methodology, the skills-artificer, the LIVE gsd-core machinery), the lineage of every command/skill, how it was designed, and how the design maps to gsd-core's goals. Linked from the README. No bundle/logic change.
+**Docs release** — bundle logic byte-identical to v2.1.0 (hooks + skills + commands + manifest surface unchanged).
+
+- **Added `docs/foundations.md`** — what the toolkit is built on (trek-e methodology, the skills-artificer, the LIVE gsd-core machinery), the lineage of every command/skill, how it was designed, and how the design maps to gsd-core's goals.
+- **Added `docs/adr/`** — three Architecture Decision Records (`CTK-ADR-0001` harness-boundary enforcement; `CTK-ADR-0002` capability-native distribution via `hooks[]`; `CTK-ADR-0003` full-surface toggle + cross-runtime), Nygard format, namespaced to avoid collision with gsd-core ADRs. Marked **Accepted** but **open to maintainer revision** (changes recorded via superseding ADRs).
+- The ADRs' gsd-core factual claims were **re-verified against the live source** (`capability-validator.cjs` C4 + feature-only `hooks`; `capability-lifecycle.cjs` marker-tagged write; `capability-registry.cjs` non-Claude no-PreToolUse-events; all 16 first-party caps declare empty `hooks[]`).
+
 
 ## v2.1.1 — 2026-06-23
 

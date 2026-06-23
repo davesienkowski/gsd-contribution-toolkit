@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **docs:** added `docs/foundations.md` — what the toolkit is built on (trek-e methodology, the skills-artificer, the LIVE gsd-core machinery), the lineage of every command/skill, how it was designed, and how the design maps to gsd-core's goals. Linked from the README. No bundle/logic change.
+
 ## v2.1.1 — 2026-06-23
 
 **Docs release** — the bundle logic is byte-identical to v2.1.0 (hooks + skills + commands + manifest surface unchanged; only the version string, README, and docs change).

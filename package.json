@@ -1,0 +1,35 @@
+{
+  "name": "@davesienkowski/gsd-contribution-toolkit",
+  "version": "2.1.3",
+  "description": "GSD Contribution Toolkit — an installable, opt-in gsd-core capability bundling the contribution + maintainer-review knowledge (two skills, five commands, one advisory plan:pre step). Advisory-only; carries no enforcement gates.",
+  "keywords": [
+    "gsd",
+    "gsd-core",
+    "capability",
+    "contribution-toolkit"
+  ],
+  "homepage": "https://github.com/davesienkowski/gsd-contribution-toolkit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davesienkowski/gsd-contribution-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davesienkowski/gsd-contribution-toolkit/issues"
+  },
+  "author": "davesienkowski",
+  "license": "MIT",
+  "files": [
+    "capability.json",
+    "hooks/",
+    "skills/",
+    "commands/",
+    "fragments/",
+    "docs/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

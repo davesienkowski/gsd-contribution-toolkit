@@ -2,8 +2,11 @@
 
 ## v2.1.3 — 2026-06-23
 
-**Docs release** — bundle logic byte-identical to v2.1.0.
+**Docs release** — bundle logic byte-identical to v2.1.0. Now also published to npm with an integrity-pinned, provenance-stamped distribution path.
 
+- **Published to npm as `@davesienkowski/gsd-contribution-toolkit`** — adds an integrity-pinned install path (`npm:` source kind), so a tampered tarball is refused fail-closed before staging. The git adapter records a null digest; the npm artifact carries a real `sha512-` digest. See README → *Integrity-pinned install (npm)*.
+- **Added `provenance: { sourceRepo, commit }` to `capability.json`** (ADR-1244 D1) — advisory metadata surfaced in the install ledger; does not gate the install.
+- **Added `package.json` + `LICENSE` (MIT)** — packaging for the npm publish.
 - **Added `docs/skills-reference.md`** — the 2 skills (`gsd-core-contribution`, `maintainer-review-sweep`): capabilities, trigger phrases, the pipeline each runs, and how to invoke them.
 - **Added `docs/commands-reference.md`** — the 5 commands: what each does, the **accepted arguments/parameters**, worked examples, and the mutation-safety model (advisory vs. opt-in `--apply`).
 

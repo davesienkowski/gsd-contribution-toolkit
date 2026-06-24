@@ -93,6 +93,27 @@ node <gsd-core>/bin/gsd-tools.cjs capability install \
 - Pin a release with `#v2.1.3` (a tag) or `#sha:<40-hex>` (an exact commit). The earlier `…-gate`
   repo name GitHub-redirects, so an existing `#v1.0.0` install does not hard-break.
 
+### Integrity-pinned install (npm, ADR-1244 D1)
+
+The bundle is also published to npm as **`@davesienkowski/gsd-contribution-toolkit`**. Unlike the git
+adapter (which records a null integrity digest), the `npm:` source kind verifies the downloaded tarball
+against a `sha512-` digest **before** staging — so a tampered artifact is refused, fail-closed:
+
+```bash
+# Fetch the authoritative digest for the version you're pinning:
+DIGEST=$(npm view @davesienkowski/gsd-contribution-toolkit@2.1.3 dist.integrity)
+
+node <gsd-core>/bin/gsd-tools.cjs capability install \
+  npm:@davesienkowski/gsd-contribution-toolkit@2.1.3 \
+  --integrity "$DIGEST" \
+  --scope project --yes --shared-file .claude/settings.json
+```
+
+- `--integrity sha512-…` is honored only for the `tarball`/`npm`/`registry` source kinds; `git`/`local`
+  installs always record a null digest. Pinning is what turns the trust model's integrity guarantee on.
+- The published `capability.json` carries a `provenance: { sourceRepo, commit }` block (advisory; it
+  surfaces in the install ledger and does not gate the install).
+
 ## Manage (on / off / status / remove)
 
 ```bash
